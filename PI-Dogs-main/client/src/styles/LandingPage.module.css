@@ -1,0 +1,25 @@
+.contain {
+    margin:0;
+   -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 800px;
+    background-image:url('../image/pexels-andy-7440455.jpg');
+    background-repeat:no-repeat;
+    background-position-x:center;
+    background-position-y:center;
+    background-size:cover; 
+    }
+   
+ 
+    .btn {
+     margin-top: 500px;
+     border: none;
+     background: #fa9332df;
+     color: rgb(6, 6, 6);
+     width: 75px;
+     height: 35px;
+     border-radius: 2px;
+     box-shadow: 5px 8px 12px black;
+     transition:all 0.3s ease-in-out ;
+               
+    }

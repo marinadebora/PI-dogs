@@ -10,33 +10,33 @@ async function getAllDogsDB(name){
     
     try {
       if(!name){
-        dogsDB= await Dog.findAll({
+        return await Dog.findAll({
             include:{
                 model:Temperament,
-                attributes:['name','id'],
+                attributes:['name'],
                 through:{
                     attributes:[]
                 } 
             }
         })
-       return(dogsDB)  
+      
     } else{
-      let dogsDB=[];
-      dogsDB = await Dog.findAll({
+     
+      return await Dog.findAll({
         
+          where:{
+             name:{[Op.iLike]:`%${name}%`}
+          },
+          
       include:{
           model:Temperament,
-          attributes:['name','id'],
+          attributes:['name'],
           through:{
               attributes:[]
           } 
       },
-       where:{
-          name:{[Op.iLike]:`%${name}%`}
-       },
-       
      })
-     return dogsDB
+     
     }
   }catch (error) {
        console.log(error) 

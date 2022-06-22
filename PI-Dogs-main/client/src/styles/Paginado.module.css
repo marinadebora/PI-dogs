@@ -1,0 +1,38 @@
+
+.contain {
+    width: 100%;
+    height: 30px;
+    display: block;
+    margin: 15px 10px;
+    
+  }
+  
+  
+  
+  .btn {
+    border: none;
+    background-color: rgba(251, 182, 9, 0.459);
+    margin: 5px;
+    width: 20px;
+    height: 50%;
+    font-size:small;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.1) ;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 5px 8px 12px black;
+    transition:all 0.3s ease-in-out ;
+}
+/* #miBoton { 
+  padding: 30px; 
+  background: light-gray; 
+  color: black; 
+}  */
+ 
+.btn-visited { 
+  padding: 30px; 
+  background: gray; 
+  color: white; 
+}
