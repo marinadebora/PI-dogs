@@ -1,10 +1,8 @@
 require('dotenv').config();
-const axios = require('axios');
-const { API_KEY } = process.env;
+//const { API_KEY } = process.env;
 const { Router } = require('express');
 const router = Router();
 const { Dog, Temperament } = require('../db.js');
-const { Op } = require('sequelize');
 const getAlldogsApi = require('../funciones/funApi.js');
 const getAllDogsDB = require('../funciones/funDB.js');
 
@@ -23,7 +21,7 @@ router.get('/', async (req, res, next) =>
     if (name) {
       if (dogDB.length) {
         res.json(dogDB)
-      } else if (dogsApi.length) {
+      } else if (dogsApi) {
         res.json(dogsApi)
 
       } else {
@@ -68,11 +66,11 @@ router.get('/:id', async (req, res, next) =>
       } else {
         const dogsApi = await getAlldogsApi();
         const dogsId = dogsApi.filter(e => e.id == id);
-        console.log(dogsId)
-        res.json(dogsId)
+        
+        res.json(dogsId[0])
       }
-    }else{
-      res.status(401).send({msj:'no se encontro el Perro'})
+    } else {
+      res.status(401).send({ msj: 'no se encontro el Perro' })
     }
   } catch (error) {
     next(error)
@@ -84,7 +82,7 @@ router.get('/:id', async (req, res, next) =>
 
 router.post('/', async (req, res, next) =>
 {
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperament } = req.body;
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperaments} = req.body;
 
   try {
     const dogPost = await Dog.create({
@@ -94,14 +92,14 @@ router.post('/', async (req, res, next) =>
       weightMin,
       weightMax,
       life_span,
-
+      temperaments,
     })
     let selectTemp = await Temperament.findAll({
-      where: {
-        name: temperament
-      },
-
+      where:{
+        name:temperaments
+      }
     })
+    
     dogPost.addTemperament(selectTemp);
     res.send('Creado con exito')
   } catch (error) {
@@ -123,9 +121,9 @@ router.delete('/:id', async (req, res, next) =>
         where: { id: id }
       }
     )
-  
+
     res.send(`Eliminado con exito`)
-    
+
   } catch (error) {
     next(error)
   }
@@ -144,7 +142,7 @@ router.put('/:id', async (req, res, next) =>
       }
     })
     if (!dogsDB) {
-      res.status(401).send('El id no existe en Base de Datos' )
+      res.status(401).send('El id no existe en Base de Datos')
     } else {
       const dogsUpdate = await Dog.update({
         name,
@@ -158,12 +156,12 @@ router.put('/:id', async (req, res, next) =>
           id: id
         }
       })
-     /*  let selectTemp = await Temperament.findAll({
-        where: {
-          name: temperament
-        },
-      })
-      dogsUpdate.addTemperament(selectTemp) */
+     /*   let selectTemp = await Temperament.findAll({
+         where: {
+           name: temperament
+         },
+       }) 
+       dogsUpdate.addTemperament(selectTemp)*/
       res.send('modificado con exito')
     }
   } catch (error) {

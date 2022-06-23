@@ -2,8 +2,8 @@
     margin:0;
    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 800px;
-    background-image:url('../image/pexels-andy-7440455.jpg');
+    height: 630px;
+    background-image:url('../image/pexels-andy-7440455\ \(2\)\ \(2\).jpg');
     background-repeat:no-repeat;
     background-position-x:center;
     background-position-y:center;
@@ -14,7 +14,7 @@
     .btn {
      margin-top: 500px;
      border: none;
-     background: #fa9332df;
+     background: #7e3321;
      color: rgb(6, 6, 6);
      width: 75px;
      height: 35px;

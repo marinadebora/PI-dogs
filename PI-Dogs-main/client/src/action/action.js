@@ -31,7 +31,7 @@ export function getAllTemperament(){
 
 
 
-export function DogName(payload) {
+export function dogName(payload) {
 
     return async function(dispatch){
      try {
@@ -48,7 +48,7 @@ export function DogName(payload) {
   }
 
 
- export function DogDetail(id){
+ export function dogDetail(id){
     return async function(dispatch){
         try {
             const dogId= await axios(`http://localhost:3001/dogs/${id}`)

@@ -2,7 +2,7 @@ const initialState = {
     dogs: [],
     allDogs:[],
     temperament: [],
-    tetail: []
+    detail: []
 }
 
 function rootReducer(state = initialState, action)
@@ -29,7 +29,7 @@ function rootReducer(state = initialState, action)
                 ...state,
                 detail: action.payload
             }
-        case 'CREATE_DOG':
+        case 'CREATE_DOGS':
             return {
                 ...state
             }  

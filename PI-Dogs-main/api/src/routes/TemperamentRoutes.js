@@ -20,15 +20,17 @@ router.get('/', async(req,res,next)=>{
     let temp=temperaments.map(e=> e.trim())
     let uniqueTemp= [...new Set(temp)];
 
-    uniqueTemp.map((element,index)=>{Temperament.findOrCreate({
+    uniqueTemp.map((element)=>{Temperament.findOrCreate({
         where:{
             name:element,
-            id:index
+           
         }
     })})
 
   
-   const alltemperaments= await Temperament.findAll()  
+   const alltemperaments= await Temperament.findAll({
+    attributes:['name']
+   })  
     
     res.send(alltemperaments);
 
