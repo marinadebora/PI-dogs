@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createDogs, getAllTemperament } from '../action/action';
 
 
@@ -28,9 +28,10 @@ const validate = (form) =>
   if (!form.life_span_Until || parseFloat(form.life_span_Until) <= parseFloat(form.life_span_Since) || parseFloat(form.life_span_Until) < 5) {
     errors.life_span_Until = 'The years of life must be greater than the minimum value and less than 25 years'
   }
-  if (!form.temperament) {
+  if (!form.temperaments) {
     errors.temperaments = 'Temperament is required'
   }
+  return errors
 }
 
 
@@ -49,9 +50,9 @@ export default function DogCreate()
     life_span_Until: '',
     temperaments: []
   });
-  console.log(form)
+
   const allTemperament = useSelector(state => state.temperament)
-  const history = useHistory()
+  const navigate = useNavigate()
   const [errors, setErrors] = useState({})
 
 useEffect(()=>{
@@ -70,7 +71,7 @@ useEffect(()=>{
 
   const handleSubmit = (event) =>
   {
-    console.log(event)
+    
     event.preventDefault();
     if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax) {
       alert('Campo requerido')
@@ -87,7 +88,7 @@ useEffect(()=>{
         life_span_Until: '',
         temperaments: []
       })
-      history.push('/home')
+      navigate('/home')
     }
 
   }
@@ -130,7 +131,7 @@ useEffect(()=>{
             name='name'
           // className={style.input} 
           />
-         {/*  {errors.name && <p>{errors.name}</p>} */}
+          {errors.name &&(<p>{errors.name}</p>)}
           <label>Minimum height</label>
           <input
             type='text'
@@ -139,7 +140,7 @@ useEffect(()=>{
             name='heightMin'
           // className={style.input} 
           />
-          {/* {errors.heightMin && <p>{errors.heightMin}</p>} */}
+          {errors.heightMin && <p>{errors.heightMin}</p>}
           <label htmlFor="heightMax">Max height</label>
           <input
             type='text'
@@ -148,7 +149,7 @@ useEffect(()=>{
             name='heightMax'
           // className={style.input} 
           />
-          {/* {errors.heightMax && <p>{errors.heightMax}</p>} */}
+           {errors.heightMax && <p>{errors.heightMax}</p>} 
           <label htmlFor="weightMin">Min weight</label>
           <input
             type='text'
@@ -157,7 +158,7 @@ useEffect(()=>{
             name='weightMin'
           // className={style.input} 
           />
-       {/*    {errors.weightMin && <p>{errors.weightMin}</p>} */}
+        {errors.weightMin && <p>{errors.weightMin}</p>}
 
           <label htmlFor="weightMax">Max weight</label>
           <input
@@ -167,7 +168,7 @@ useEffect(()=>{
             name='weightMax'
           // className={style.input} 
           />
-         {/*  {errors.weightMax && <p>{errors.weightMax}</p>} */}
+        {errors.weightMax && <p>{errors.weightMax}</p>} 
           <label htmlFor="Years of life">Years of life</label>
           <label htmlFor="life_span_Since">Since</label>
           <input
@@ -177,7 +178,7 @@ useEffect(()=>{
             name='life_span_Since'
           // className={style.input} 
           />
-          {/* {errors.life_span_Since && <p>{errors.life_span_Since}</p>} */}
+          {errors.life_span_Since && <p>{errors.life_span_Since}</p>}
           <label htmlFor="life_span_Until">Until</label>
           <input
             type='text'
@@ -186,7 +187,7 @@ useEffect(()=>{
             name='life_span_Until'
           // className={style.input} 
           />
-          {/* {errors.life_span_Until && <p>{errors.life_span_Until}</p>} */}
+          {errors.life_span_Until && <p>{errors.life_span_Until}</p>}
           <label>Temperament</label>
           <select
             onChange={(e) => handleTemperament(e)}
@@ -196,11 +197,11 @@ useEffect(()=>{
             ))
             }
           </select>
-           {/*  {errors.temperaments && <p>{errors.temperament}</p>} */}
+            {errors.temperaments && <p>{errors.temperament}</p>}
           {form.temperaments.map(e =>
             <div>
               <h5>{e}</h5>
-              <button onClick={handleDelete} >X</button>
+              <button onClick={()=>handleDelete(e)} >X</button>
             </div>
           )}
 

@@ -100,3 +100,34 @@ export function updateDog(id){
         }
     }
 }
+//-------------filters-------------//
+
+
+export function filterTemperament(payload){
+    return {
+        type:'FILTER_TEMPERAMENT',
+        payload,
+    }
+}
+export function filterCreated(payload){
+    return {
+        type:'FILTER_CREATED',
+        payload,
+    }
+}
+
+
+//-------------order-------------//
+export function order(payload){
+    return {
+        type:'ORDER',
+        payload,
+    }
+}
+
+export function orderWeight(payload){
+    return {
+        type:'ORDER_WEIGHT',
+        payload,
+    }
+}

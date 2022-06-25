@@ -1,17 +1,22 @@
 import './App.css';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route,Routes } from 'react-router-dom'
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import DogDetail from './components/DogDetail';
 import DogCreate from './components/DogCreate';
+import SearchBar from './components/SearchBar';
+
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-    <Route exact path= '/' component={LandingPage}/>
-    <Route exact path='/home' component={Home}/>
-    <Route exact path='/dogs' component={DogCreate}/>
-    <Route  exact path='/home/:id' component={DogDetail}/> 
+    <Routes>
+    <Route exact path= '/' element={<LandingPage />}/>
+    <Route exact path='/home' element={<Home />}/>
+    <Route exact path='/dogs' element={<DogCreate />}/>
+    <Route  exact path='/home/:id' element={<DogDetail />}/>  
+    <Route  exact path='/home/search' element={<SearchBar />}/> 
+    </Routes>
     </div>
     </BrowserRouter>
   );

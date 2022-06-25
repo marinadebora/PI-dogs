@@ -14,17 +14,19 @@ export default function SearchBar()
   {
     event.preventDefault()
     setName(event.target.value)
+ 
   }
-  function handleSubmit(event)
-  {
+  function handleSubmit(event){
     event.preventDefault();
     dispatch(dogName(name))
+   
   }
 
   return (
     <div>
-      <input key='buscar' type='text' placeholder='Search...' onChange={handleChange} />
-      <button className={style.btn} type='submit' onClick={handleSubmit}>SEARCH</button>
+      <label htmlFor="search by name">Search by name</label>
+      <input key='buscar' type='text' placeholder='Search...' onChange={(e)=>handleChange(e)} />
+      <button className={style.btn} type='submit' onClick={(e)=>handleSubmit(e)}>SEARCH</button>
     </div>
   )
 }

@@ -26,14 +26,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:false
     },
-    weightMin:{
+    weightMax:{
       type: DataTypes.STRING,
       allowNull:false
     },
    
-    life_span:{
+    life_span_Since:{
       type: DataTypes.STRING
     }, 
+    life_span_Until:{
+      type: DataTypes.STRING
+    },
       createDB:{
       type:DataTypes.BOOLEAN,
       allowNull:false,

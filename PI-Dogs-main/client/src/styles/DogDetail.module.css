@@ -25,12 +25,14 @@ button{
 h1{
     color: rgb(180, 179, 179);
 }
+
 .img{
-    width: 550px;
-    height: 380px;
-   padding: 20px;
-    display: inline-block;
-    border-radius: 30px;
+    width: 45%;
+    height: 40%;
+    background-repeat:no-repeat;
+    background-position-x:center;
+    background-position-y:center;
+    background-size:cover; 
 }
 .detail{
     position: relative;

@@ -38,7 +38,7 @@ router.get('/', async (req, res, next) =>
 
       res.send([...dogDB, ...dogsApi])
     }
-
+    
   } catch (error) {
     next(error)
   }
@@ -82,16 +82,17 @@ router.get('/:id', async (req, res, next) =>
 
 router.post('/', async (req, res, next) =>
 {
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperaments} = req.body;
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since,life_span_Until, temperaments} = req.body;
 
   try {
     const dogPost = await Dog.create({
-      name,
+      name:name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()),//remplaza la primer letra por mayuscula
       heightMin,
       heightMax,
       weightMin,
       weightMax,
-      life_span,
+      life_span_Since,
+      life_span_Until,
       temperaments,
     })
     let selectTemp = await Temperament.findAll({
@@ -134,7 +135,7 @@ router.delete('/:id', async (req, res, next) =>
 router.put('/:id', async (req, res, next) =>
 {
   const { id } = req.params;
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperament } = req.body;
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperaments } = req.body;
   try {
     const dogsDB = await Dog.findAll({
       where: {
@@ -150,18 +151,20 @@ router.put('/:id', async (req, res, next) =>
         heightMax,
         weightMin,
         weightMax,
-        life_span,
+        life_span_Since,
+        life_span_Until,
+        temperaments
       }, {
         where: {
           id: id
         }
       })
-     /*   let selectTemp = await Temperament.findAll({
+       let selectTemp = await Temperament.findAll({
          where: {
-           name: temperament
+           name: temperaments
          },
        }) 
-       dogsUpdate.addTemperament(selectTemp)*/
+       dogsUpdate.addTemperament(selectTemp)
       res.send('modificado con exito')
     }
   } catch (error) {
