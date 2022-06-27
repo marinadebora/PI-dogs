@@ -7,16 +7,18 @@ import style from '../styles/DogDetail.module.css'
 import img from '../image/defaultDB.jpg'
 import getTemperaments from "../funciones/funTemp";
 
+
 export default function DogDetail()
 {
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  
 
 
   useEffect(() =>
   {
     dispatch(dogDetail(id))
+   
   }, [dispatch, id])
 
   const myDetail = useSelector((state) => state.detail);
@@ -24,24 +26,24 @@ export default function DogDetail()
 
   return (
     <div className={style.container}>
-      <div className={style.detail}>
+      
         {
           myDetail ?
-            <div>
-              <h1>{myDetail.name}</h1>
-
+          <div className={style.personajes} >
               {
                 myDetail.image ? <img src={myDetail.image} className={style.img} alt={myDetail.name} />
                   : <img src={img} className={style.img} alt='Created Database' />
               }
+              <div className={style.contenedorText}>
+              <h1 className={style.name}>{myDetail.name}</h1>
+             
 
 
-              <Link to='/home'>
-                <button>RETURN</button>
-              </Link>
-
+             
+          <div className={style.text}>
               <h3>Temperament: </h3>
-              <p>{getTemperaments(myDetail.temperaments)}</p>
+              {myDetail.temperaments? <p>{getTemperaments(myDetail.temperaments)}</p>:<p>Empty data</p>}
+              
 
               <h3> Minimum height: </h3>
               <p>{myDetail.heightMin} cm</p>
@@ -61,14 +63,20 @@ export default function DogDetail()
                   : <p>Until: Empty data </p>
 
               }
-
+          </div>
+          <br/>
+           <Link to='/home'>
+                <button>RETURN</button>
+              </Link>
+          </div>
+          
             </div>
             :
             <div className="loading">
               <h1><strong>Loading...</strong></h1>
             </div>
         }
-      </div>
+     
     </div>
   )
 }

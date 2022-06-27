@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCreated, filterTemperament, getAllDogs, getAllTemperament, order } from "../action/action";
+import { filterCreated, filterTemperament, getAllDogs, getAllTemperament, order, orderWeight } from "../action/action";
 import { Link } from 'react-router-dom';
 import Dogs from "./Dogs";
 import Paginado from "./Paginado";
 import style from '../styles/Home.module.css'
-import Loader from "./Loader";
 import SearchBar from "./SearchBar";
-
+import gif from '../image/perros.gif'
 
 
 export default function Home()
@@ -36,10 +35,9 @@ export default function Home()
 
   useEffect(() =>
   {
-    setLoading(true)
+  
     dispatch(getAllDogs())
     dispatch(getAllTemperament())
-    setTimeout(function () { setLoading(false) }, 2000)
   }, [dispatch]);
 
 
@@ -69,7 +67,7 @@ export default function Home()
 
   const weightChange = (event) =>{
     event.preventDefault()
-    dispatch(order(event.target.value))
+    dispatch(orderWeight(event.target.value))
     setPage(1)
     setOrdering(`Order ${event.target.value}`)
   }
@@ -78,15 +76,16 @@ export default function Home()
   return( 
   <div className={style.contain} id='contain'>
     {
-      loading && <Loader />
-    }
-    <Link to='/dogs'><h3>Create your dog breed</h3></Link>
+      !allCharacters?<img src={gif} className={style.gif}  alt='gif'/>:
+    <div className={style.searchbar}>
+    <Link className={style.link} to='/dogs'><h3 className={style.created}>Create your dog breed</h3></Link>
     <div id='search'>
       <SearchBar/>
-      <button onClick={reloadClick}>Reload</button>
+      <button className={style.btn} onClick={reloadClick}>Reload</button>
     </div>
-    <div>
-      <select name="temp" id="temperamnt" onChange={temperamentChange}>
+    <div className={style.divContainer}>
+    <div className={style.filters}>
+      <select  name="temp" id="temperamnt" onChange={temperamentChange}>
         <option value={'all'}>Temperaments</option>
         {
           allTemperaments?.map(e =>
@@ -97,29 +96,32 @@ export default function Home()
 
       </select>
     </div>
-        <div>
-          <label htmlFor="creayed">Created or Existing  </label>
-          <select name="created" id="dogCreated" onChange={createdtChange}>
+        <div className={style.filters}>
+          <label className={style.label}>Created or Existing  </label>
+         
+          <select  className={style.select} name="created" id="dogCreated" onChange={(e)=>createdtChange(e)}>
             <option value={'all'}>All the dogs</option>
             <option value={'db'}>Created in database</option>
             <option value={'api'}>Existing in the API</option>
           </select>
+         
         </div>
-        <div>
-        <label htmlFor="order">Order alphabetically  </label>
-          <select name="created" id="dogCreated" onChange={orderChange}>
+        <div className={style.filters}>
+        <label className={style.label}>Order alphabetically  </label>
+          <select  className={style.select} name="created" id="dogCreated" onChange={(e)=>orderChange(e)}>
             <option value={'all'}>All the dogs</option>
             <option value={'upward'}>A-Z</option>
             <option value={'falling'}>Z-A</option>
           </select>
         </div>
-        <div>
-        <label htmlFor="sort">Sort by weight </label>
-          <select name="sortByWeight" id="byWeight" onChange={weightChange}>
+        <div className={style.filters}>
+        <label className={style.label}>Sort by weight </label>
+          <select  className={style.select} name="sortByWeight" id="byWeight" onChange={(e)=>weightChange(e)}>
             <option value={'all'}>All the dogs</option>
             <option value={'min'}>Smallers</option>
             <option value={'max'}>Biggers</option>
           </select>
+        </div>
         </div>
     <Paginado
       characterPerPage={characterPerPage}
@@ -139,13 +141,15 @@ export default function Home()
                 temperaments={e.temperaments}
                 weightMin={e.weightMin}
                 weightMax={e.weightMax}
+                id={e.id}
               />
             </Link>
           </Fragment>
         )
       })
     }
-
+    </div>
+}
   </div>
   )
 };

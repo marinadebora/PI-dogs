@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { createDogs, getAllTemperament } from '../action/action';
-
+import style from '../styles/DogCreate.module.css'
 
 const validate = (form) =>
 {
@@ -73,7 +73,7 @@ useEffect(()=>{
   {
     
     event.preventDefault();
-    if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax) {
+    if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax || !form.temperaments) {
       alert('Campo requerido')
     } else {
       dispatch(createDogs(form))
@@ -99,10 +99,10 @@ useEffect(()=>{
       ...form,
       temperaments: [...form.temperaments, event.target.value]
     })
-   /*  setErrors(validate({
+    setErrors(validate({
       ...form,
       [event.target.name]: event.target.value
-    })) */
+    }))
   }
   const handleDelete = (event) =>
   {
@@ -118,77 +118,92 @@ useEffect(()=>{
         <Link to='/home'> <button>RETURN</button></Link>
       </div>
       <div>
-        <h1>Create your dog breed</h1>
+        <h1 className={style.title}>Create your dog breed</h1>
       </div>
 
       <div>
-        <form onSubmit={handleSubmit}>
-          <label>Name</label>
+        <form className={style.form} onSubmit={handleSubmit}>
+          <div className={style.container}>
+            <div className={style.group}>
+          <label className={style.label}>Name</label>
           <input
             type='text'
             onChange={(e) =>handleChange(e)}
             value={form.name}
             name='name'
-          // className={style.input} 
+           className={style.input} 
           />
-          {errors.name &&(<p>{errors.name}</p>)}
-          <label>Minimum height</label>
+          {errors.name &&(<p className={style.p}>{errors.name}</p>)}
+          </div>
+          <div className={style.group}>
+          <label className={style.label}>Minimum height</label>
           <input
             type='text'
             onChange={(e) =>handleChange(e)}
             value={form.heightMin}
             name='heightMin'
-          // className={style.input} 
+           className={style.input} 
           />
-          {errors.heightMin && <p>{errors.heightMin}</p>}
-          <label htmlFor="heightMax">Max height</label>
+          {errors.heightMin && <p className={style.p}>{errors.heightMin}</p>}
+          </div>
+          <div className={style.group}>
+          <label className={style.label}>Max height</label>
           <input
             type='text'
             onChange={(e) => handleChange(e)}
             value={form.heightMax}
             name='heightMax'
-          // className={style.input} 
+           className={style.input} 
           />
-           {errors.heightMax && <p>{errors.heightMax}</p>} 
-          <label htmlFor="weightMin">Min weight</label>
+           {errors.heightMax && <p className={style.p}>{errors.heightMax}</p>}
+           </div>
+           <div className={style.group}>
+          <label className={style.label}>Min weight</label>
           <input
             type='text'
             onChange={(e) => handleChange(e)}
             value={form.weightMin}
             name='weightMin'
-          // className={style.input} 
+           className={style.input} 
           />
-        {errors.weightMin && <p>{errors.weightMin}</p>}
-
-          <label htmlFor="weightMax">Max weight</label>
+        {errors.weightMin && <p className={style.p}>{errors.weightMin}</p>}
+        </div> 
+        <div className={style.group}>
+          <label className={style.label}>Max weight</label>
           <input
             type='text'
             onChange={(e) => handleChange(e)}
             value={form.weightMax}
             name='weightMax'
-          // className={style.input} 
+          className={style.input} 
           />
-        {errors.weightMax && <p>{errors.weightMax}</p>} 
-          <label htmlFor="Years of life">Years of life</label>
-          <label htmlFor="life_span_Since">Since</label>
+        {errors.weightMax && <p className={style.p}>{errors.weightMax}</p>} 
+        </div>
+        <div className={style.group}>
+          <label className={style.label}>Years of life</label>
+          <label className={style.label}>Since</label>
           <input
             type='text'
             onChange={(e) => handleChange(e)}
             value={form.life_span_Since}
             name='life_span_Since'
-          // className={style.input} 
+           className={style.input} 
           />
-          {errors.life_span_Since && <p>{errors.life_span_Since}</p>}
-          <label htmlFor="life_span_Until">Until</label>
+          {errors.life_span_Since && <p className={style.p}>{errors.life_span_Since}</p>}
+          </div>
+          <div className={style.group}>
+          <label className={style.label}>Until</label>
           <input
             type='text'
             onChange={(e) => handleChange(e)}
             value={form.life_span_Until}
             name='life_span_Until'
-          // className={style.input} 
+          className={style.input} 
           />
-          {errors.life_span_Until && <p>{errors.life_span_Until}</p>}
-          <label>Temperament</label>
+          {errors.life_span_Until && <p className={style.p}>{errors.life_span_Until}</p>}
+          </div>
+          <div className={style.group}>
+          <label className={style.label}>Temperament</label>
           <select
             onChange={(e) => handleTemperament(e)}
           >
@@ -197,15 +212,17 @@ useEffect(()=>{
             ))
             }
           </select>
-            {errors.temperaments && <p>{errors.temperament}</p>}
+          </div>
           {form.temperaments.map(e =>
-            <div>
+            <div className={style.temp}>
               <h5>{e}</h5>
               <button onClick={()=>handleDelete(e)} >X</button>
             </div>
           )}
+          {errors.temperaments && <p className={style.p}>{errors.temperament}</p>}
 
-          <button type="submit">Create</button>
+          <button type="submit" className={style.button}>Create</button>
+        </div>
         </form>
       </div>
 

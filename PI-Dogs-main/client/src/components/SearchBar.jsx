@@ -23,7 +23,7 @@ export default function SearchBar()
   }
 
   return (
-    <div>
+    <div className={style.searchbar}>
       <label htmlFor="search by name">Search by name</label>
       <input key='buscar' type='text' placeholder='Search...' onChange={(e)=>handleChange(e)} />
       <button className={style.btn} type='submit' onClick={(e)=>handleSubmit(e)}>SEARCH</button>

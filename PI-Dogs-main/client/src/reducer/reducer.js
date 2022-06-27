@@ -35,11 +35,12 @@ function rootReducer(state = initialState, action)
                 ...state
             }  
         case 'DOG_DELETE':
-                const filterDog= state.allDogs.filter(e=> e!== action.payload)
+               
             return {
                     ...state,
-                    dogs: filterDog
+                  
                 }
+                
          case 'DOG_UPDATE':
             return {
                     ...state,
@@ -55,7 +56,8 @@ function rootReducer(state = initialState, action)
                     let filterName= e.temperaments.map(e=> e.name)
                     return filterName.includes(action.payload)
                 }
-                return true
+               
+                return 'no se encontro la raza'
             })
 
             return{
@@ -71,8 +73,7 @@ function rootReducer(state = initialState, action)
             }      
         case 'ORDER':
             const filterOrder=state.allDogs;
-            const order=action.payload ==='all'? filterOrder: filterOrder=== 'upward' ? 
-            filterOrder.sort((a, b)=>{
+            const order=action.payload ==='all'? state.allDogs: action.payload === 'upward' ? filterOrder.sort((a, b)=>{
                 if(a.name > b.name){
                     return 1
                 }
@@ -80,8 +81,7 @@ function rootReducer(state = initialState, action)
                     return -1
                 }
                 return 0
-            })
-            :filterOrder.sort((a, b)=>{
+            }):filterOrder.sort((a, b)=>{
                 if(a.name > b.name){
                     return -1
                 }
@@ -96,20 +96,20 @@ function rootReducer(state = initialState, action)
             }
         case 'ORDER_WEIGHT':
            
-            const weightOrder= action.payload=== 'min' ? 
-            state.allDogs.sort(function(a, b){
-              return Number(a.weightMax)- Number(b.weightMax)
+            const weightOrder= action.payload=== 'min' ? state.allDogs.sort(function(a, b){
+              return parseInt(a.weightMax)- parseInt(b.weightMax)
 
             })
             :
             state.allDogs.sort(function(a, b){
-                return Number(b.weightMax) - Number(a.weightMax)
+
+                return parseInt(b.weightMax) - parseInt(a.weightMax)
 
 
             })
             return{
                 ...state,
-                dogs:weightOrder
+                dogs:action.payload=== 'all' ? state.allDogs:weightOrder
             }
 
         default:
