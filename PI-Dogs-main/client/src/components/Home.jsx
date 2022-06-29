@@ -79,9 +79,11 @@ export default function Home()
       !allCharacters?<img src={gif} className={style.gif}  alt='gif'/>:
     <div className={style.searchbar}>
     <Link className={style.link} to='/dogs'><h3 className={style.created}>Create your dog breed</h3></Link>
-    <div id='search'>
+    <div className='search'>
       <SearchBar/>
-      <button className={style.btn} onClick={reloadClick}>Reload</button>
+      <div className={style.btn}>
+      <button  onClick={reloadClick}>Reload</button>
+      </div>
     </div>
     <div className={style.divContainer}>
     <div className={style.filters}>
@@ -110,8 +112,8 @@ export default function Home()
         <label className={style.label}>Order alphabetically  </label>
           <select  className={style.select} name="created" id="dogCreated" onChange={(e)=>orderChange(e)}>
             <option value={'all'}>All the dogs</option>
-            <option value={'upward'}>A-Z</option>
             <option value={'falling'}>Z-A</option>
+            <option value={'upward'}>A-Z</option>
           </select>
         </div>
         <div className={style.filters}>

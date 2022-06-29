@@ -2,13 +2,19 @@
     width: 100%;
     display: block;
     margin-left: 15px;
-    margin-top: 0;
+    margin-top: 30px;
+    
 
 }
-
+.label {
+    width: 80%;
+    margin: 6px;
+  color: rgb(252, 252, 252);
+    text-align: left;
+  }
 
 .btn {
-    margin: 10;
+    margin: 5px;
     border: none;
     background-color: #fbbd97
         /*  margin:5px;

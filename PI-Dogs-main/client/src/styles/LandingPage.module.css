@@ -1,25 +1,28 @@
 .contain {
-    margin:0;
-   -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    height: 630px;
-    background-image:url('../image/pexels-andy-7440455\ \(2\)\ \(2\).jpg');
+  width: 100%;
+   /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
+    height: 100%;
+    background-image:url('../image/dogs.jpg' );
     background-repeat:no-repeat;
-    background-position-x:center;
-    background-position-y:center;
-    background-size:cover; 
+    background-position:center center;
+   background-attachment: fixed;
+    background-size:contain; 
+   position: absolute;
     }
    
  
     .btn {
-     margin-top: 500px;
+     margin-top: 470px;
+     margin-left: 52%;
      border: none;
-     background: #7e3321;
+     position: relative;
+     
      color: rgb(6, 6, 6);
-     width: 75px;
-     height: 35px;
+     width: 90px;
+     height: 55px;
      border-radius: 2px;
-     box-shadow: 5px 8px 12px black;
+     
      transition:all 0.3s ease-in-out ;
                
     }
