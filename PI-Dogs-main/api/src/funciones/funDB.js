@@ -1,8 +1,4 @@
-require('dotenv').config();
-const axios =require ('axios');
-const {API_KEY}=process.env;
-const { Router } = require('express');
-const router = Router();
+
 const { Dog , Temperament }=require('../db.js');
 const {Op}=require('sequelize');
 

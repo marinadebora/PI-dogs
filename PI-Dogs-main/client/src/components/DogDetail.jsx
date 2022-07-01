@@ -14,6 +14,7 @@ export default function DogDetail()
   const { id } = useParams();
   
 
+  const myDetail = useSelector((state) => state.detail);
 
   useEffect(() =>
   {
@@ -21,7 +22,6 @@ export default function DogDetail()
    
   }, [dispatch, id])
 
-  const myDetail = useSelector((state) => state.detail);
 
 
   return (
@@ -30,16 +30,15 @@ export default function DogDetail()
         {
           myDetail ?
           <div className={style.personajes} >
+            <h1 className={style.name}>{myDetail.name} <Link to='/home'>
+                <button className={style.button}>RETURN</button>
+              </Link></h1>
               {
                 myDetail.image ? <img src={myDetail.image} className={style.img} alt={myDetail.name} />
                   : <img src={img} className={style.img} alt='Created Database' />
               }
               <div className={style.contenedorText}>
-              <h1 className={style.name}>{myDetail.name}</h1>
-             
-
-
-             
+    
           <div className={style.text}>
               <h3>Temperament: </h3>
               {myDetail.temperaments? <p>{getTemperaments(myDetail.temperaments)}</p>:<p>Empty data</p>}
@@ -64,10 +63,7 @@ export default function DogDetail()
 
               }
           </div>
-          <br/>
-           <Link to='/home'>
-                <button>RETURN</button>
-              </Link>
+          <br />
           </div>
           
             </div>

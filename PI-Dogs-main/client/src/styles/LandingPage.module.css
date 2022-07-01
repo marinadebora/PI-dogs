@@ -1,25 +1,27 @@
 .contain {
-  width: 100%;
+  padding: 0;
+  margin: 0;
+  
    /* -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; */
-    height: 100%;
+    height: 100vh;
     background-image:url('../image/dogs.jpg' );
     background-repeat:no-repeat;
     background-position:center center;
    background-attachment: fixed;
     background-size:contain; 
-   position: absolute;
+   
     }
    
  
     .btn {
-     margin-top: 470px;
-     margin-left: 52%;
+     margin-top: 520px;
+     margin-left: 45%;
      border: none;
      position: relative;
      
      color: rgb(6, 6, 6);
-     width: 90px;
+     width: 110px;
      height: 55px;
      border-radius: 2px;
      

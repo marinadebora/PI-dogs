@@ -14,7 +14,7 @@ for (let i = 0; i < Math.ceil(allCharacters/characterPerPage); i++) {
 
   return <div className={style.contain}>
      {page?.map(e=>(
-            <button onClick={()=>paginado(e)} className={style.btn} key={e}>{e}</button>
+            <button onClick={()=>paginado(e)} key={e}>{e}</button>
 
         ))}
   </div>;

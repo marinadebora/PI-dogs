@@ -114,10 +114,8 @@ useEffect(()=>{
 
   return (
     <div>
-      <div>
+      <div className={style.btnCreated}>
         <Link to='/home'> <button>RETURN</button></Link>
-      </div>
-      <div>
         <h1 className={style.title}>Create your dog breed</h1>
       </div>
 
@@ -203,7 +201,7 @@ useEffect(()=>{
           {errors.life_span_Until && <p className={style.p}>{errors.life_span_Until}</p>}
           </div>
           <div className={style.group}>
-          <label className={style.label}>Temperament</label>
+          <label className={style.label}>Temperament  </label>
           <select
             onChange={(e) => handleTemperament(e)}
           >
@@ -215,8 +213,9 @@ useEffect(()=>{
           </div>
           {form.temperaments.map(e =>
             <div className={style.temp}>
-              <h5>{e}</h5>
-              <button onClick={()=>handleDelete(e)} >X</button>
+              <h5>{e}
+              <button className={style.btn} onClick={()=>handleDelete(e)} >X</button>
+              </h5>
             </div>
           )}
           {errors.temperaments && <p className={style.p}>{errors.temperament}</p>}

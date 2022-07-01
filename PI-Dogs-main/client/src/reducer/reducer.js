@@ -49,8 +49,7 @@ function rootReducer(state = initialState, action)
 
         case 'FILTER_TEMPERAMENT':
             const allDogsTemp= state.allDogs;
-            const filteratemp= action.payload==='all'? allDogsTemp:
-            allDogsTemp.filter(e=>{
+            const filteratemp= allDogsTemp.filter(e=>{
               
                 if(typeof(e.temperaments)==='string')return e.temperaments.includes(action.payload)
                 if(Array.isArray(e.temperaments)){
@@ -65,14 +64,14 @@ function rootReducer(state = initialState, action)
 
             return{
                 ...state,
-                dogs:filteratemp
+                dogs: action.payload ==='all'? allDogsTemp:filteratemp
             }        
         case 'FILTER_CREATED':
           
-            const filtercreated=action.payload ==='all'? state.allDogs: action.payload ==='db'? state.allDogs.filter(e=> e.createDB) : state.allDogs.filter(e=> !e.createDB)  
+            const filtercreated= action.payload ==='db'? state.allDogs.filter(e=> e.createDB) : state.allDogs.filter(e=> !e.createDB)  
             return {
                 ...state,
-                dogs:filtercreated
+                dogs:action.payload ==='all'? state.allDogs: filtercreated
             }      
         case 'ORDER':
             const filterOrder=state.allDogs;
@@ -99,8 +98,8 @@ function rootReducer(state = initialState, action)
             }
         case 'ORDER_WEIGHT':
            
-            const weightOrder=action.payload === 'all' ? state.allDogs: action.payload === 'min' ? state.allDogs.sort(function(a, b){
-              return parseInt(a.weightMax)- parseInt(b.weightMax)
+            const weightOrder= action.payload === 'min' ? state.allDogs.sort(function(a, b){
+              return parseInt(a.weightMin)- parseInt(b.weightMin)
 
             })
             :
@@ -112,8 +111,9 @@ function rootReducer(state = initialState, action)
             })
             return{
                 ...state,
-                dogs:weightOrder
+                dogs:action.payload === 'all' ? state.dogs:weightOrder
             }
+
 
         default:
             return {

@@ -36,7 +36,6 @@
 .p{
 color: white;
 background-color: rgba(0, 0, 0, 0.292);
-
 border-radius: 5px;
 margin-top: 5px;
 
@@ -46,11 +45,18 @@ margin-top: 5px;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2px;
   grid-auto-rows: 20px;
-   
+  
 }
 .temp h5{
+    
     color: white;
     font-size: 18px;
+}
+.btn{
+    width: 25px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f9dc02;
 }
 .button{
     width: 50%;
@@ -59,4 +65,7 @@ margin-top: 5px;
     text-align: center;
     margin: auto;
     margin-bottom: 30px;
+    cursor: pointer;
+    background-color: #f9dc02;
+    border-radius: 5px;
 }

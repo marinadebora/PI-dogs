@@ -135,39 +135,33 @@ router.delete('/:id', async (req, res, next) =>
 router.put('/:id', async (req, res, next) =>
 {
   const { id } = req.params;
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span, temperaments } = req.body;
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since,life_span_Until, temperaments } = req.body;
   try {
-    const dogsDB = await Dog.findAll({
-      where: {
-        id: id
-      }
-    })
-    if (!dogsDB) {
-      res.status(401).send('El id no existe en Base de Datos')
-    } else {
-      const dogsUpdate = await Dog.update({
-        name,
-        heightMin,
-        heightMax,
-        weightMin,
-        weightMax,
-        life_span_Since,
-        life_span_Until,
-        temperaments
-      }, {
-        where: {
-          id: id
-        }
-      })
+    const dogsDB = await Dog.findByPk(id)
+
+     
+    
+        dogsDB.name=name;
+        dogsDB.heightMin=heightMin
+        dogsDB.heightMax=heightMax
+        dogsDB.weightMin=weightMin
+        dogsDB.weightMax=weightMax
+        dogsDB.life_span_Since=life_span_Since
+        dogsDB.life_span_Until=life_span_Until
+        dogsDB.temperaments=temperaments
+   
+      /* 
        let selectTemp = await Temperament.findAll({
          where: {
            name: temperaments
          },
        }) 
-       dogsUpdate.addTemperament(selectTemp)
-      res.send('modificado con exito')
+       await dogsDB.save()
+       dogsDB.addTemperament(selectTemp) */
+
+      res.json(dogsDB)
     }
-  } catch (error) {
+   catch (error) {
     next(error)
   }
 })

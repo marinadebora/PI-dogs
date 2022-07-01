@@ -57,7 +57,7 @@ h1{
 
 .container{
     text-align: center; 
-    padding: 40px;
+    padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     line-height: 1.5rem;
@@ -66,8 +66,7 @@ h1{
 .personajes{
     width: 1170px;
     height: 500px;
-   /*  margin:10px 10px 50px; */
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     background-image: url('../image/huellas.png');
@@ -76,53 +75,61 @@ h1{
     background-position-y:center;
     background-size:cover; 
     border-radius: 10px;
-    box-shadow: 5px 8px 12px black;
-    transition:all 0.5s ease-in-out ;
-    
     
     }
+
     .img{
+        box-shadow: 5px 4px 2px #f9dc02;
+        margin: 18px;
         width: 50%;
         height: 70%;
         display: block;
         border-radius: 10px;
-        box-shadow: 5px 8px 12px black;
+       
       }
       .contenedorText {
         width: 400px;
         height: 349px;
-        
-       
          text-align: center; 
-         padding: 10px;
+         padding:0  15px ;
          font-family: Arial, Helvetica, sans-serif;
          font-weight: 400;
          line-height: 1.5rem;
          color: rgb(73, 72, 72);
+         margin-bottom: 15px;
       }
       .name{
-        /* margin: 5px;
-        width: 45%; */
-       margin-top: 0;
+       inset-block: 20%;
+       margin-left:65px;
         color:white;
         font-size: 1.5rem;
-       /*  font-weight: 600; */
-      /*   margin-bottom: 20px; */
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: left;
       }
     .text{
-      /*   */
+   
       margin: 0%;
-        padding: 5px;
-    background-color: #f5c565e2;
+        padding: 5px 0px;
+    background-color: #f9dc02;
     border-radius: 10px;
-      font-size:1.1rem ;
-      text-align: justify;
-      box-shadow: 5px 8px 12px black;
+    
+   
+     
     }
-    button{
+    .text h3 {
+        margin: 2px;
+    }
+    .text p{
+        margin: 2px;
+    }
+   .button{
         width: 100px;
         height: 25px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
-        box-shadow: 5px 8px 12px black;
+        background-color: #f9dc02;
+        border-radius: 5px;
+        margin-left: 25px;
+        cursor: pointer;
     }

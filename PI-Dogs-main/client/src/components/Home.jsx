@@ -74,54 +74,54 @@ export default function Home()
   
 
   return( 
-  <div className={style.contain} id='contain'>
+  <div className={style.contain} key='contain'>
     {
       !allCharacters?<img src={gif} className={style.gif}  alt='gif'/>:
-    <div className={style.searchbar}>
-    <Link className={style.link} to='/dogs'><h3 className={style.created}>Create your dog breed</h3></Link>
-    <div className='search'>
+    <div key= {'searchbar'}className={style.searchbar}>
+    <Link key='dogs' className={style.link} to='/dogs'><h3 className={style.created}>Create your dog breed</h3></Link>
+    <div key={'search'} className='search'>
       <SearchBar/>
-      <div className={style.btn}>
-      <button  onClick={reloadClick}>Reload</button>
+      <div key='btn'className={style.btn}>
+      <button key={'reloadClick'}  onClick={reloadClick}>Reload</button>
       </div>
     </div>
-    <div className={style.divContainer}>
-    <div className={style.filters}>
-      <select  name="temp" id="temperamnt" onChange={temperamentChange}>
-        <option value={'all'}>Temperaments</option>
+    <div key='divContain' className={style.divContainer}>
+    <div key={'divs'} className={style.filters}>
+      <select key={"temperamnt"}  name="temp" id="temperamnt" onChange={temperamentChange}>
+        <option key={'all'} value={'all'}>Temperaments</option>
         {
           allTemperaments?.map(e =>
           {
-            return <option value={e.name}>{e.name}</option>
+            return <option key={e.name} value={e.name}>{e.name}</option>
           })
         }
 
       </select>
     </div>
-        <div className={style.filters}>
+        <div key='filter' className={style.filters}>
           <label className={style.label}>Created or Existing  </label>
          
           <select  className={style.select} name="created" id="dogCreated" onChange={(e)=>createdtChange(e)}>
-            <option value={'all'}>All the dogs</option>
-            <option value={'db'}>Created in database</option>
-            <option value={'api'}>Existing in the API</option>
+            <option key={'allDg'} value={'all'}>All the dogs</option>
+            <option key={'db'} value={'db'}>Created in database</option>
+            <option key={'api'} value={'api'}>Existing in the API</option>
           </select>
          
         </div>
-        <div className={style.filters}>
+        <div key='filters'className={style.filters}>
         <label className={style.label}>Order alphabetically  </label>
           <select  className={style.select} name="created" id="dogCreated" onChange={(e)=>orderChange(e)}>
-            <option value={'all'}>All the dogs</option>
-            <option value={'falling'}>Z-A</option>
-            <option value={'upward'}>A-Z</option>
+            <option key={'allDogs'}value={'all'}>All the dogs</option>
+            <option key={'falling'}value={'falling'}>Z-A</option>
+            <option key={'upward'}value={'upward'}>A-Z</option>
           </select>
         </div>
-        <div className={style.filters}>
+        <div key='filterss'className={style.filters}>
         <label className={style.label}>Sort by weight </label>
           <select  className={style.select} name="sortByWeight" id="byWeight" onChange={(e)=>weightChange(e)}>
-            <option value={'all'}>All the dogs</option>
-            <option value={'min'}>Smallers</option>
-            <option value={'max'}>Biggers</option>
+            <option key={'all' }value={'all'}>All the dogs</option>
+            <option key={'max'}value={'max'}>Biggers</option>
+            <option key={'min'}value={'min'}>Smallers</option>
           </select>
         </div>
         </div>

@@ -27,7 +27,7 @@
 }
 .created {
 margin-top: 30px;
-margin-left: 20px;
+margin-left: 60px;
   position: relative;
   text-decoration: none;
   color: white;
@@ -73,16 +73,21 @@ color: rgb(252, 252, 252);
 
 }
 
-.select {}
 
-.btn {
-  margin: 35px;
-  width: auto;
-  height: auto;
+.btn button{
+
+  width: 100px;
+  height: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #f9dc02;
+  border-radius: 5px;
+  margin: 8px 15px;
+  cursor: pointer;
 }
 
 .gif {
-  margin-top: 20%;
+  margin-top: 30%;
   margin-left: 23%;
   width: 50%;
   height: 80%;
