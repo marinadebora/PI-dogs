@@ -5,8 +5,8 @@
 }
 
 .container {
-    width: 350px;
-    height: 300px;
+    width: 410px;
+    height: 400px;
     overflow: hidden;
     position: relative;
     box-shadow: 5px 8px 12px rgba(148, 148, 148, 0.483);
@@ -43,7 +43,7 @@
     font-size: 1.5rem;
     color: #fbf9f9;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 10%;
     transform: translateX(-50%, -50%);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -53,14 +53,14 @@
 .container h5 {
 
 
-    color: #080808;
+    color: #f5fd02;
     position: absolute;
     top: 90%;
     left: 10%;
     margin: 10px;
 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 0 0 8px black;
+    text-shadow: 3px 3px 8px black;
 }
 
 .container h4 {

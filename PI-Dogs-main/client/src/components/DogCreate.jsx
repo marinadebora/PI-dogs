@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { createDogs, getAllTemperament } from '../action/action';
 import style from '../styles/DogCreate.module.css'
-
+import image from '../image/Nuevo.png'
 const validate = (form) =>
 {
   let errors = {};
@@ -28,7 +28,7 @@ const validate = (form) =>
   if (!form.life_span_Until || parseFloat(form.life_span_Until) <= parseFloat(form.life_span_Since) || parseFloat(form.life_span_Until) < 5) {
     errors.life_span_Until = 'The years of life must be greater than the minimum value and less than 25 years'
   }
-  if (!form.temperaments) {
+  if (form.temperaments.legth< 1) {
     errors.temperaments = 'Temperament is required'
   }
   return errors
@@ -115,8 +115,9 @@ useEffect(()=>{
   return (
     <div>
       <div className={style.btnCreated}>
-        <Link to='/home'> <button>RETURN</button></Link>
+        
         <h1 className={style.title}>Create your dog breed</h1>
+        <Link to='/home'> <img src={image} alt='hueso'/></Link>
       </div>
 
       <div>
@@ -205,11 +206,14 @@ useEffect(()=>{
           <select
             onChange={(e) => handleTemperament(e)}
           >
+            <option>Select Temperament</option>
             {allTemperament?.map((e) => (
+              
               <option value={e.name} name={e.name} key={e.name}>{e.name}</option>
             ))
             }
           </select>
+          
           </div>
           {form.temperaments.map(e =>
             <div className={style.temp}>
@@ -217,8 +221,9 @@ useEffect(()=>{
               <button className={style.btn} onClick={()=>handleDelete(e)} >X</button>
               </h5>
             </div>
-          )}
-          {errors.temperaments && <p className={style.p}>{errors.temperament}</p>}
+           
+          )} {errors.temperaments && <p className={style.p}>{errors.temperament}</p>}
+         
 
           <button type="submit" className={style.button}>Create</button>
         </div>

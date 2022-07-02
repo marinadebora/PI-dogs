@@ -36,7 +36,7 @@ router.get('/', async (req, res, next) =>
           const [dogDB, dogsApi] = response
         })
 
-      res.send([...dogDB, ...dogsApi])
+      res.send([...dogDB, ...dogsApi]).status(200)
     }
     
   } catch (error) {

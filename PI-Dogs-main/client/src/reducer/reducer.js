@@ -75,7 +75,7 @@ function rootReducer(state = initialState, action)
             }      
         case 'ORDER':
             const filterOrder=state.allDogs;
-            const order= action.payload === 'falling' ? filterOrder.sort((a, b)=>{
+            const order=action.payload ==='all'? state.dogs: action.payload === 'falling' ? filterOrder.sort((a, b)=>{
                 if(a.name > b.name){
                     return -1
                 }
@@ -94,24 +94,26 @@ function rootReducer(state = initialState, action)
             })
             return{
                 ...state,
-                dogs:action.payload ==='all'? state.allDogs:order
+                dogs:order
             }
         case 'ORDER_WEIGHT':
+        
            
             const weightOrder= action.payload === 'min' ? state.allDogs.sort(function(a, b){
               return parseInt(a.weightMin)- parseInt(b.weightMin)
 
             })
-            :
+            : action.payload === 'max' ?
             state.allDogs.sort(function(a, b){
 
                 return parseInt(b.weightMax) - parseInt(a.weightMax)
-
+               
 
             })
+            : state.dogs
             return{
                 ...state,
-                dogs:action.payload === 'all' ? state.dogs:weightOrder
+                dogs:weightOrder
             }
 
 

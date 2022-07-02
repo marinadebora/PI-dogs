@@ -69,3 +69,16 @@ margin-top: 5px;
     background-color: #f9dc02;
     border-radius: 5px;
 }
+.btnCreated h1{
+    text-align: center;
+}
+.btnCreated  img{
+   width: 100px;
+   height: 50px;
+  
+    margin-left: 200px;
+    
+   
+    cursor: pointer;
+    border-radius: 5px;
+}
