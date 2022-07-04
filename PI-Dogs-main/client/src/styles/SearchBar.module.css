@@ -17,7 +17,8 @@
 .btn {
     margin: 5px;
     border: none;
-    background-color: #f9dc02
+    background-color: #f9dc02;
+    cursor: pointer;
         /*  margin:5px;
     width: auto;
     height: 25px;

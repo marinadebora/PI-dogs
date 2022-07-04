@@ -33,6 +33,7 @@ export default function DogDetail()
             <h1 className={style.name}>{myDetail.name} <Link to='/home'>
                 <button className={style.button}>RETURN</button>
               </Link></h1>
+            {/*  <Link to={'/update'}><button className={style.button}>UPDATE</button> </Link> */}
               {
                 myDetail.image ? <img src={myDetail.image} className={style.img} alt={myDetail.name} />
                   : <img src={img} className={style.img} alt='Created Database' />

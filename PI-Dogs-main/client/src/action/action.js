@@ -47,20 +47,25 @@ export function dogName(payload) {
   
   }
 
-
+//-------fetch-------//
  export function dogDetail(id){
     return async function(dispatch){
-        try {
-            const dogId= await axios(`http://localhost:3001/dogs/${id}`)
-            return dispatch({
-                type:'DOG_DETAIL',
-                payload:dogId.data
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
- }
+       return(
+        fetch(`http://localhost:3001/dogs/${id}`)
+        .then(response=>response.json())
+        .then(data=> dispatch({
+            type:'DOG_DETAIL',
+            payload:data
+        }))
+        .catch (error=>console.log(error)) 
+            
+       )}
+          
+               
+      
+        } 
+ 
+
 
 export function createDogs(payload){
     return async function(){

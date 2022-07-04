@@ -137,29 +137,30 @@ router.put('/:id', async (req, res, next) =>
   const { id } = req.params;
   const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since,life_span_Until, temperaments } = req.body;
   try {
-    const dogsDB = await Dog.findByPk(id)
-
-     
-    
-        dogsDB.name=name;
-        dogsDB.heightMin=heightMin
-        dogsDB.heightMax=heightMax
-        dogsDB.weightMin=weightMin
-        dogsDB.weightMax=weightMax
-        dogsDB.life_span_Since=life_span_Since
-        dogsDB.life_span_Until=life_span_Until
-        dogsDB.temperaments=temperaments
+      Dog.update({
+        name,
+        heightMin,
+        heightMax,
+        weightMin,
+        weightMax,
+        life_span_Since,
+        life_span_Until,
+        temperaments
+      },{
+        where:{
+          id:id
+        }
+      })
    
-      /* 
+      
        let selectTemp = await Temperament.findAll({
          where: {
            name: temperaments
          },
        }) 
-       await dogsDB.save()
-       dogsDB.addTemperament(selectTemp) */
+     
 
-      res.json(dogsDB)
+      res.send('exito')
     }
    catch (error) {
     next(error)

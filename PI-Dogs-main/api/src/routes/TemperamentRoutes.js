@@ -13,11 +13,13 @@ router.get('/', async(req,res,next)=>{
     ))
     let element='';
     for (let i = 0; i < temperaments.length; i++) {
-       element = element+temperaments[i];
+       element = element+temperaments[i]+ ', ';
         
     }
-    temperaments=element.split(',')
-    let temp=temperaments.map(e=> e.trim())
+    
+    temperaments=element.split(', ')
+    let temp=temperaments.map(e=> e)
+    console.log(temp)
     let uniqueTemp= [...new Set(temp)];
 
     uniqueTemp.map((element)=>{Temperament.findOrCreate({

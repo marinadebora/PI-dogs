@@ -16,7 +16,6 @@ export default function Home()
   const allTemperaments = useSelector(state => state.temperament)
   const allCharacters = useSelector(state => state.dogs);
 
-  const [loading, setLoading] = useState(false)
   const [ordering,setOrdering]= useState('')
   const [page, setPage] = useState(1);
   const [characterPerPage, setCharacterPerPage] = useState(8);
@@ -59,17 +58,27 @@ export default function Home()
   }
 
   const orderChange = (event) =>{
-    event.preventDefault()
-    dispatch(order(event.target.value))
-    setPage(1)
-    setOrdering(`Order ${event.target.value}`)
+    event.preventDefault();
+    if(event.target.value=== 'all'){
+      dispatch(getAllDogs())
+    }else{
+      dispatch(order(event.target.value))
+      setPage(1)
+      setOrdering(`Order ${event.target.value}`)
+
+    }
   }
 
   const weightChange = (event) =>{
     event.preventDefault()
-    dispatch(orderWeight(event.target.value))
-    setPage(1)
-    setOrdering(`Order ${event.target.value}`)
+    if(event.target.value=== 'all'){
+      dispatch(getAllDogs())
+    }else{
+
+      dispatch(orderWeight(event.target.value))
+      setPage(1)
+      setOrdering(`Order ${event.target.value}`)
+    }
   }
   
 

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import DogDetail from './components/DogDetail';
 import DogCreate from './components/DogCreate';
 import SearchBar from './components/SearchBar';
+import { DogUpdate } from './components/DogUpdate';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
     <Route exact path='/home' element={<Home />}/>
     <Route exact path='/dogs' element={<DogCreate />}/>
     <Route  exact path='/home/:id' element={<DogDetail />}/>  
-    <Route  exact path='/home/search' element={<SearchBar />}/> 
+    <Route  exact path='/home/search' element={<SearchBar />}/>
+    
     </Routes>
     </div>
     </BrowserRouter>
