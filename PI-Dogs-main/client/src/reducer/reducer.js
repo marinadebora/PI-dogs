@@ -13,7 +13,9 @@ function rootReducer(state = initialState, action)
             return {
                 ...state,
                 dogs: action.payload,
-                allDogs: action.payload
+                allDogs: action.payload,
+                detail: [],
+
             }
         case 'GET_ALL_TEMPERAMENT':
 
@@ -51,7 +53,7 @@ function rootReducer(state = initialState, action)
             }
 
         case 'FILTER_TEMPERAMENT':
-            const allDogsTemp = state.allDogs.filter(e=>e.temperaments);
+            const allDogsTemp = state.allDogs.filter(e => e.temperaments);
             const filteratemp = allDogsTemp.filter(e =>
             {
                 if (typeof (e.temperaments) === 'string') return e.temperaments.includes(action.payload)
@@ -101,17 +103,17 @@ function rootReducer(state = initialState, action)
             }
         case 'ORDER_WEIGHT':
 
-
-            const weightOrder = action.payload === 'min' ? state.allDogs.sort(function (a, b)
+            const filterWM = state.allDogs.filter(e => e.weightMax)
+            const weightOrder = action.payload === 'min' ? filterWM.sort(function (a, b)
             {
-                return (a.weightMin) - (b.weightMin)
+                return (a.weightMax) - (b.weightMax)
 
             })
                 : action.payload === 'max' ?
-                    state.allDogs.sort(function (a, b)
+                    filterWM.sort(function (a, b)
                     {
 
-                        return (b.weightMax) - parseInt(a.weightMax)
+                        return (b.weightMax) - (a.weightMax)
 
 
                     })

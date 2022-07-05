@@ -1,21 +1,17 @@
 import React from "react";
 import style from '../styles/Paginado.module.css'
 
-export default function Paginado ({characterPerPage, allCharacters, paginado}) {
+export default function Paginado({ characterPerPage, allCharacters, paginado }){
+  let page = [];
 
-let page=[];
-for (let i = 0; i < Math.ceil(allCharacters/characterPerPage); i++) {
-    
-    page.push(i+1)
-}
-    
-       
-    
-
+  for (let i = 0; i < Math.ceil(allCharacters / characterPerPage); i++) {
+    page.push(i + 1)
+  }
+  
   return <div className={style.contain}>
-     {page?.map(e=>(
-            <button onClick={()=>paginado(e)} key={e}>{e}</button>
+    {page?.map(e => (
+      <button onClick={() => paginado(e)} key={e}>{e}</button>
 
-        ))}
+    ))}
   </div>;
 };

@@ -53,19 +53,16 @@
 .container h5 {
 
 
-    color: #f5fd02;
+    color: #d0d704;
     position: absolute;
     top: 90%;
     left: 10%;
     margin: 10px;
-
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 3px 3px 8px black;
+    text-shadow: 1px 1px 2px black;
 }
 
 .container h4 {
-
-
     color: #fbf9f9;
     position: absolute;
     top: 80%;
@@ -73,7 +70,7 @@
     margin: auto;
     flex-wrap: wrap;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 0 0 8px black;
+    text-shadow: 0 0 5px black;
 }
 
 .container button {
@@ -90,5 +87,3 @@
     color: black;
     box-shadow: 5px 8px 12px black;
 }
-
-/*  background-image:url('../image/default.jpg') ; */

@@ -9,8 +9,7 @@ const getAllDogsDB = require('../funciones/funDB.js');
 
 //-------------BUSCA TODOS LOS PERROS Y POR NOMBRE-------------//
 
-router.get('/', async (req, res, next) =>
-{
+router.get('/', async (req, res, next) =>{
   const { name } = req.query;
 
   try {
@@ -38,7 +37,7 @@ router.get('/', async (req, res, next) =>
 
       res.send([...dogDB, ...dogsApi]).status(200)
     }
-    
+
   } catch (error) {
     next(error)
   }
@@ -47,8 +46,7 @@ router.get('/', async (req, res, next) =>
 
 //----------------------BUSCA POR ID----------------------//
 
-router.get('/:id', async (req, res, next) =>
-{
+router.get('/:id', async (req, res, next) =>{
   const { id } = req.params;
   try {
     if (id) {
@@ -66,7 +64,7 @@ router.get('/:id', async (req, res, next) =>
       } else {
         const dogsApi = await getAlldogsApi();
         const dogsId = dogsApi.filter(e => e.id == id);
-        
+
         res.json(dogsId[0])
       }
     } else {
@@ -80,13 +78,12 @@ router.get('/:id', async (req, res, next) =>
 //-------------------------POST-------------------------//
 
 
-router.post('/', async (req, res, next) =>
-{
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since,life_span_Until, temperaments} = req.body;
+router.post('/', async (req, res, next) =>{
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since, life_span_Until, temperaments } = req.body;
 
   try {
     const dogPost = await Dog.create({
-      name:name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()),//remplaza la primer letra por mayuscula
+      name: name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()),//remplaza la primer letra por mayuscula
       heightMin,
       heightMax,
       weightMin,
@@ -96,11 +93,11 @@ router.post('/', async (req, res, next) =>
       temperaments,
     })
     let selectTemp = await Temperament.findAll({
-      where:{
-        name:temperaments
+      where: {
+        name: temperaments
       }
     })
-    
+
     dogPost.addTemperament(selectTemp);
     res.send('Creado con exito')
   } catch (error) {
@@ -113,8 +110,7 @@ router.post('/', async (req, res, next) =>
 
 //-------------------------DELETE-------------------------//
 
-router.delete('/:id', async (req, res, next) =>
-{
+router.delete('/:id', async (req, res, next) =>{
   const { id } = req.params;
   try {
     let nExcluidos = await Dog.destroy(
@@ -132,37 +128,36 @@ router.delete('/:id', async (req, res, next) =>
 
 
 //-------------------------PUT-------------------------//
-router.put('/:id', async (req, res, next) =>
-{
+router.put('/:id', async (req, res, next) =>{
   const { id } = req.params;
-  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since,life_span_Until, temperaments } = req.body;
+  const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since, life_span_Until, temperaments } = req.body;
   try {
-      Dog.update({
-        name,
-        heightMin,
-        heightMax,
-        weightMin,
-        weightMax,
-        life_span_Since,
-        life_span_Until,
-        temperaments
-      },{
-        where:{
-          id:id
-        }
-      })
-   
-      
-       let selectTemp = await Temperament.findAll({
-         where: {
-           name: temperaments
-         },
-       }) 
-     
+    Dog.update({
+      name,
+      heightMin,
+      heightMax,
+      weightMin,
+      weightMax,
+      life_span_Since,
+      life_span_Until,
+      temperaments
+    }, {
+      where: {
+        id: id
+      }
+    })
 
-      res.send('exito')
-    }
-   catch (error) {
+
+    let selectTemp = await Temperament.findAll({
+      where: {
+        name: temperaments
+      },
+    })
+
+
+    res.send('exito')
+  }
+  catch (error) {
     next(error)
   }
 })

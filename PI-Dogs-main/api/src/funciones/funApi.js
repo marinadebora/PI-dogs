@@ -4,12 +4,9 @@ const axios = require('axios');
 
 
 
-async function getAlldogsApi(name)
-{
-
+async function getAlldogsApi(name){
   try {
     if (!name) {
-      
       let dogsApi = (await axios(`https://api.thedogapi.com/v1/breeds`))//?api_key=${API_KEY}
         .data.map(e => ({
           id: e.id,
@@ -23,12 +20,12 @@ async function getAlldogsApi(name)
           life_span_Since: e.life_span.split('-')[0],
           life_span_Until: e.life_span.split('-')[1],
         }));
+        return (dogsApi)
         
-      return (dogsApi)
     } else {
       let dogsApi = (await axios(`https://api.thedogapi.com/v1/breeds`)).data
         .filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
-      let obj = dogsApi.map(e =>({
+      let obj = dogsApi.map(e => ({
         id: e.id,
         name: e.name,
         image: e.image.url,

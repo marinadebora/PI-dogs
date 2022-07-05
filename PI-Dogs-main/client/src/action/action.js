@@ -31,7 +31,7 @@ export function getAllTemperament(){
 
 
 
-export function dogName(payload) {
+export function dogName(payload){
 
     return async function(dispatch){
      try {
@@ -48,6 +48,7 @@ export function dogName(payload) {
   }
 
 //-------fetch-------//
+
  export function dogDetail(id){
     return async function(dispatch){
        return(
@@ -123,6 +124,7 @@ export function filterCreated(payload){
 
 
 //-------------order-------------//
+
 export function order(payload){
     return {
         type:'ORDER',

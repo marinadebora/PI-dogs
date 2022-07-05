@@ -1,33 +1,26 @@
 .contain {
-
   width: 100%;
   height: 200px;
- /* background-color: rgba(240, 248, 255, 0.423); */
   display: block;
   position: relative;
   box-shadow: 5px 8px 12px rgb(44, 44, 44);
   transition: all 0.3s ease-in-out;
   display: inline-block;
-
-
-
-
 }
 
 .searchbar {
-
   display: flex;
   flex-wrap: wrap;
-/*   background-color: rgba(10, 136, 246, 0.423); */
-
 }
-.search{
+
+.search {
   margin: 10px;
   width: 30%;
 }
+
 .created {
-margin-top: 30px;
-margin-left: 60px;
+  margin-top: 30px;
+  margin-left: 60px;
   position: relative;
   text-decoration: none;
   color: white;
@@ -35,18 +28,14 @@ margin-left: 60px;
 
 .divContainer {
   margin-top: 30px;
-margin-left: 60px;
+  margin-left: 60px;
   width: 30%;
-  /* background-color: rgba(255, 240, 252, 0.423); */
   border-radius: 3px;
   color: white;
   justify-content: end;
   display: block;
   box-sizing: border-box;
-
-
   padding: 3px;
-
 }
 
 .link {
@@ -58,24 +47,19 @@ margin-left: 60px;
 .filters {
   display: flex;
   margin: 3px;
-
 }
 
 .label {
   width: 80%;
-color: rgb(252, 252, 252);
+  color: rgb(252, 252, 252);
   text-align: left;
 }
 
 .option {
   margin-left: 30%;
-
-
 }
 
-
-.btn button{
-
+.btn button {
   width: 100px;
   height: 25px;
   font-family: Arial, Helvetica, sans-serif;
@@ -91,6 +75,6 @@ color: rgb(252, 252, 252);
   margin-left: 23%;
   width: 50%;
   height: 80%;
-border-radius:46% 54% 48% 52% / 63% 86% 14% 37%  ;
-  box-shadow:0 8px  10px  rgba(251, 252, 252, 0.31);
+  border-radius: 46% 54% 48% 52% / 63% 86% 14% 37%;
+  box-shadow: 0 8px 10px rgba(251, 252, 252, 0.31);
 }

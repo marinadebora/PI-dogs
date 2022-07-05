@@ -1,6 +1,6 @@
 
 
-export default function getTemperaments (temperaments) {
+export default function getTemperaments(temperaments){
     if (typeof (temperaments) === 'string') {
         return temperaments
     }

@@ -1,64 +1,73 @@
-
-.form{
-    margin:auto;
+.form {
+    margin: auto;
     width: 90%;
     max-width: 400px;
-    padding:2em, 3em;
+    padding: 2em, 3em;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgb(0, 0, 0 / 40%);
     text-align: center;
 }
-.title{
+
+.title {
     font-size: 2rem;
     margin-bottom: .5em;
     color: white;
 }
-.container{
-    margin-top:1em;
+
+.container {
+    margin-top: 1em;
     display: grid;
     gap: 2.5em;
 }
-.group{
+
+.group {
     position: relative;
 }
-.input{
+
+.input {
     color: white;
     width: 100%;
     font-size: 1rem;
     background: none;
     padding: .6em .3em;
-    font-family:Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif
 }
-.label{
-    color:white;
-    cursor:pointer;
+
+.label {
+    color: white;
+    cursor: pointer;
 }
-.p{
-color: white;
-background-color: rgba(0, 0, 0, 0.292);
-border-radius: 5px;
-margin-top: 5px;
+
+.p {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.292);
+    border-radius: 5px;
+    margin-top: 5px;
 
 }
-.temp{
+
+.temp {
     display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2px;
-  grid-auto-rows: 20px;
-  
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2px;
+    grid-auto-rows: 20px;
+
 }
-.temp h5{
-    
+
+.temp h5 {
+
     color: white;
     font-size: 18px;
 }
-.btn{
+
+.btn {
     width: 25px;
     text-align: center;
     border-radius: 5px;
     background-color: #f9dc02;
 }
-.button{
+
+.button {
     width: 50%;
     height: 25px;
     font-family: 5px;
@@ -69,16 +78,18 @@ margin-top: 5px;
     background-color: #f9dc02;
     border-radius: 5px;
 }
-.btnCreated h1{
+
+.btnCreated h1 {
     text-align: center;
 }
-.btnCreated  img{
-   width: 100px;
-   height: 50px;
-  
+
+.btnCreated img {
+    width: 100px;
+    height: 50px;
+
     margin-left: 200px;
-    
-   
+
+
     cursor: pointer;
     border-radius: 5px;
 }
