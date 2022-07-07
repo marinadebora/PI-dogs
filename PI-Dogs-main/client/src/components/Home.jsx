@@ -57,6 +57,8 @@ export default function Home(){
     event.preventDefault();
     if (event.target.value === 'all') {
       dispatch(getAllDogs())
+      setPage(1)
+      setOrdering(`Order ${event.target.value}`)
     } else {
       dispatch(order(event.target.value))
       setPage(1)
@@ -69,6 +71,8 @@ export default function Home(){
     event.preventDefault()
     if (event.target.value === 'all') {
       dispatch(getAllDogs())
+      setPage(1)
+      setOrdering(`Order ${event.target.value}`)
     } else {
       dispatch(orderWeight(event.target.value))
       setPage(1)

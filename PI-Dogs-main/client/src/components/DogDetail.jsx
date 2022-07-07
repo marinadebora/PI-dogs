@@ -8,14 +8,12 @@ import img from '../image/defaultDB.jpg'
 import getTemperaments from "../funciones/funTemp";
 
 
-export default function DogDetail()
-{
+export default function DogDetail(){
   const dispatch = useDispatch();
   const { id } = useParams();
   const myDetail = useSelector((state) => state.detail);
 
-  useEffect(() =>
-  {
+  useEffect(() =>{
     dispatch(dogDetail(id))
 
   }, [dispatch, id])

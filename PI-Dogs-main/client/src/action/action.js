@@ -15,7 +15,7 @@ export function getAllDogs(){
     } 
 };
 
-export function getAllTemperament(){
+ export function getAllTemperament(){
     return async function(dispatch){
         try {
            const temperament= await axios('http://localhost:3001/temperament') 
@@ -27,7 +27,7 @@ export function getAllTemperament(){
             console.log(error)
         }
     }
-}
+} 
 
 
 

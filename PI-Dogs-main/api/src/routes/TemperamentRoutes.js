@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) =>{
     let temp = temperaments.map(e => e)
 
     let uniqueTemp = [...new Set(temp)];
-
+    
     uniqueTemp.map((element) =>{
         Temperament.findOrCreate({
             where: {

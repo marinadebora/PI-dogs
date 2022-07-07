@@ -6,8 +6,7 @@ const initialState = {
 
 }
 
-function rootReducer(state = initialState, action)
-{
+function rootReducer(state = initialState, action){
     switch (action.type) {
         case 'GET_ALL_DOGS':
             return {

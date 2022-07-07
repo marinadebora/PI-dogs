@@ -48,7 +48,7 @@ export default function DogCreate()
   {
     event.preventDefault();
     if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax || !form.temperaments) {
-      alert('Campo requerido')
+      alert('Complete all fields')
     } else {
       dispatch(createDogs(form))
       alert('Dog breed successfully created!!')

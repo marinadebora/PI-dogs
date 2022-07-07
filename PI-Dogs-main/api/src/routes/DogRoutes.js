@@ -132,7 +132,7 @@ router.put('/:id', async (req, res, next) =>{
   const { id } = req.params;
   const { name, heightMin, heightMax, weightMin, weightMax, life_span_Since, life_span_Until, temperaments } = req.body;
   try {
-    Dog.update({
+    const up=Dog.update({
       name,
       heightMin,
       heightMax,
@@ -154,7 +154,7 @@ router.put('/:id', async (req, res, next) =>{
       },
     })
 
-
+    up.addTemperament(selectTemp);
     res.send('exito')
   }
   catch (error) {
