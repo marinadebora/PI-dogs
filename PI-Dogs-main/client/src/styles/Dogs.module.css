@@ -73,6 +73,16 @@
     text-shadow: 0 0 5px black;
 }
 
+.container h2 {
+    color: #fbf9f9;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    margin: auto;
+    flex-wrap: wrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 0 0 5px black;
+}
 .container button {
     position: absolute;
     cursor: pointer;

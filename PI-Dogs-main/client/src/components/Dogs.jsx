@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { deleteDogs, getAllDogs } from "../action/action";
 
 
-export default function Dogs({ image, name, temperaments, weightMin, weightMax, id }){
+export default function Dogs({ image, name, temperaments, weightMin, weightMax, id, origin }){
   const dispatch = useDispatch()
 
   const handleDelete = (event) =>{
@@ -26,7 +26,10 @@ export default function Dogs({ image, name, temperaments, weightMin, weightMax, 
         {
           image ? <img src={image} alt={name} /> : <img src={img} alt={name} />
         }
-
+       {/*  {
+          origin ? <h2>origin: {origin}</h2>: <h2>empty data</h2>
+        }
+         */}
         <h3>Breed: {name}</h3>
 
         {

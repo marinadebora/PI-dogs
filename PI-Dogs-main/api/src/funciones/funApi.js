@@ -12,6 +12,7 @@ async function getAlldogsApi(name){
           id: e.id,
           name: e.name,
           image: e.image.url,
+          origin:e.origin,
           temperaments: e.temperament,
           weightMin: parseInt(e.weight.metric.split(' ')[0]),
           weightMax: parseInt(e.weight.metric.split(' ')[2]),
@@ -29,6 +30,7 @@ async function getAlldogsApi(name){
         id: e.id,
         name: e.name,
         image: e.image.url,
+       /*  origin:e.origin, */
         temperaments: e.temperament,
         weightMin: e.weight.metric.split('-')[0],
         weightMax: e.weight.metric.split('-')[1],

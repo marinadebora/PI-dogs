@@ -15,6 +15,7 @@ module.exports = (sequelize) =>{
       type: DataTypes.STRING,
       allowNull: false,
     },
+    
 
     heightMin: {
       type: DataTypes.STRING,

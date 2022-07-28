@@ -152,6 +152,7 @@ export default function Home(){
                         weightMin={e.weightMin}
                         weightMax={e.weightMax}
                         id={e.id}
+                        origin={e.origin}
                       />
                     </Link>
                   </Fragment>
