@@ -48,7 +48,7 @@ export function dogName(payload){
   }
 
 //-------fetch-------//
-
+/* 
  export function dogDetail(id){
     return async function(dispatch){
        return(
@@ -64,8 +64,25 @@ export function dogName(payload){
           
                
       
-        } 
- 
+        }  */
+        export function dogDetail(id)
+        {
+            return async function (dispatch)
+            {
+                try {
+                   const dogDetail =await axios(`/dogs/${id}`)
+                  
+                    return dispatch({
+                        type: 'DOG_DETAIL',
+                        payload: dogDetail.data
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+        
+            }
+        
+        }
 
 
 export function createDogs(payload){
