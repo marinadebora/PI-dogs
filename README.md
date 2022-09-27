@@ -30,7 +30,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
  3. Una vez completado este paso, desde la consola, y parado en la carpeta <strong>'api'</strong>, correr los comandos ```npm install``` para instalar las dependencias. Luego, ```npm start``` para levantar la base de datos y correr el Back-end.
  4. Repetir los comandos en otra consola, pero parado en la carpeta <strong>'client'</strong>.
  5. El proyecto debería estarse corriendo en la ruta <em>http://localhost:3000</em> en tu navegador.
-
+## Tambien podes verlo en [Dogs] (https://pi-dogs-kappa.vercel.app)
 ## Tecnologías utilizadas:
 - [ ] JavaScript
 - [ ] React
