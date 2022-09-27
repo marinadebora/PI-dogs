@@ -14,7 +14,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
   - Filtrarlos / Ordenarlos
   - Agregar nuevos perros
 
-## ¿Quieres probar mi proyecto?
+## Para probar mi proyecto segui los siguientes pasos
 
  1. Clonar el repositorio en sus computadoras, puedes hacerlo utilizando el comando `git clone https://github.com/JulianG1808/PI-Dogs-GomezJulian.git` en <strong>'git bash'</strong>
  2. En la carpeta `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
@@ -29,7 +29,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
     Adicionalmente será necesario que crees desde <strong>PostgresSQL</strong> una base de datos llamada `dogs`.
  3. Una vez completado este paso, desde la consola, y parado en la carpeta <strong>'api'</strong>, correr los comandos ```npm install``` para instalar las dependencias. Luego, ```npm start``` para levantar la base de datos y correr el Back-end.
  4. Repetir los comandos en otra consola, pero parado en la carpeta <strong>'client'</strong>.
- 5. El proyecto debería estarse corriendo en la ruta <em>localhost:3000</em> en tu navegador.
+ 5. El proyecto debería estarse corriendo en la ruta <em>http://localhost:3000</em> en tu navegador.
 
 ## Tecnologías utilizadas:
 - [ ] JavaScript
@@ -51,3 +51,6 @@ Home
 
 Crear raza
 <img src ="https://res.cloudinary.com/deqbqghhq/image/upload/v1664317565/Nuevo_proyecto_16_uvhxup.jpg"/>
+
+Raza creada
+<img src ="https://res.cloudinary.com/deqbqghhq/image/upload/v1664317737/Nuevo_proyecto_17_kflezi.jpg"/>
