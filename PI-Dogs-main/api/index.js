@@ -25,6 +25,6 @@ const {
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen( DB_PORT, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log(`%s listening at ${DB_PORT}`); // eslint-disable-line no-console
   });
 });
