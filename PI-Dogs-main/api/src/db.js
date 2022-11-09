@@ -30,7 +30,7 @@ process.env.NODE_ENV==="production"
   ssl:true,
 })
 :new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`||DATABASE_URL,
+  DATABASE_URL,
   {logging:false, native:false}
 );
 
