@@ -7,7 +7,7 @@ const {
 } = process.env;
 
 let sequelize=
-process.env.NODE_ENV==="production"
+/* process.env.NODE_ENV==="production"
 ?new Sequelize({
   database:DB_NAME,
   dialect:"postgres",
@@ -28,8 +28,8 @@ process.env.NODE_ENV==="production"
     keepAlive:true,
   },
   ssl:true,
-})
-:new Sequelize(
+}) */
+new Sequelize(
   DATABASE_URL,
   {logging:false, native:false}
 );
