@@ -17,11 +17,11 @@ export default function Home(){
   const [ordering, setOrdering] = useState('')
 //---------PAGINADO---------//
   const [page, setPage] = useState(1);
-  const [characterPerPage, setCharacterPerPage] = useState(8);
+  const [characterPerPage/* , setCharacterPerPage */] = useState(8);
   const index = page * characterPerPage;
   const endIndex = index - characterPerPage;
   const actualPage = allCharacters?.slice(endIndex, index);
-
+console.log(ordering)
 
 
   const paginado = (numPage) =>{
