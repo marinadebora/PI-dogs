@@ -22,7 +22,7 @@ export default function Home(){
   const endIndex = index - characterPerPage;
   const actualPage = allCharacters?.slice(endIndex, index);
 console.log(ordering)
-
+console.log(actualPage)
 
   const paginado = (numPage) =>{
     setPage(numPage)
