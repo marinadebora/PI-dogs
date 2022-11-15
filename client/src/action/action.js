@@ -1,10 +1,13 @@
 import axios from 'axios';
+import dotenv from "dotenv"
+dotenv.config()
 
+ 
 
 export function getAllDogs(){
     return async function(dispatch){
        try {
-        const Dogs= await axios('/dogs');
+        const Dogs= await axios(`${process.env.REACT_APP_API }/dogs`);
         return dispatch({
             type:'GET_ALL_DOGS',
             payload:Dogs.data
@@ -18,7 +21,7 @@ export function getAllDogs(){
  export function getAllTemperament(){
     return async function(dispatch){
         try {
-           const temperament= await axios('/temperament') 
+           const temperament= await axios(`${process.env.REACT_APP_API }/temperament`) 
            return dispatch({
             type:'GET_ALL_TEMPERAMENT',
             payload:temperament.data
@@ -35,7 +38,7 @@ export function dogName(payload){
 
     return async function(dispatch){
      try {
-        const name= await axios(`/dogs?name=${payload}`)
+        const name= await axios(`${process.env.REACT_APP_API }/dogs?name=${payload}`)
         return dispatch({
           type:'DOG_NAME',
           payload:name.data
@@ -70,7 +73,7 @@ export function dogName(payload){
             return async function (dispatch)
             {
                 try {
-                   const dogDetail =await axios(`/dogs/${id}`)
+                   const dogDetail =await axios(`${process.env.REACT_APP_API }/dogs/${id}`)
                   
                     return dispatch({
                         type: 'DOG_DETAIL',
@@ -88,7 +91,7 @@ export function dogName(payload){
 export function createDogs(payload){
     return async function(){
         try {
-           const dogsCreate= await axios.post(`/dogs`,payload) 
+           const dogsCreate= await axios.post(`${process.env.REACT_APP_API }/dogs`,payload) 
            return dogsCreate
         } catch (error) {
             console.log(error)
@@ -99,7 +102,7 @@ export function createDogs(payload){
 export function deleteDogs(id){
     return async function(dispatch){
         try {
-           const dogsDelete= await axios.delete(`/dogs/${id}`) 
+           const dogsDelete= await axios.delete(`${process.env.REACT_APP_API }/dogs/${id}`) 
            return dispatch({
             type:'DOG_DELETE',
             payload:dogsDelete.data
@@ -113,7 +116,7 @@ export function deleteDogs(id){
 export function updateDog(id){
     return async function(dispatch){
         try {
-          const dogsUpdate= await axios.put(`/dogs/${id}`) 
+          const dogsUpdate= await axios.put(`${process.env.REACT_APP_API }/dogs/${id}`) 
           return dispatch({
             type:'DOG_UPDATE',
             payload:dogsUpdate.data
