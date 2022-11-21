@@ -18,7 +18,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
 ## Para probar mi proyecto segui los siguientes pasos
 
  1. Clonar el repositorio en sus computadoras, puedes hacerlo utilizando el comando `git clone https://github.com/marinadebora/PI-dogs.git` en <strong>'git bash'</strong>
- 2. En la carpeta `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
+ 2. Tambien deberás clonar el repo del backend `https://github.com/marinadebora/PI-Dogs-backend`  En la carpeta `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
     ```
     DB_USER=usuariodepostgres
     DB_PASSWORD=passwordDePostgres
