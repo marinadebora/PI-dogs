@@ -43,7 +43,7 @@ La idea general fue crear una aplicación en la cual se puedan ver distintas raz
 - [ ] HTML
 - [ ] CSS
 
-## Imagenes del proyecto
+## Imagenes del proyecto (Link al repo [backend](https://github.com/marinadebora/PI-Dogs-backend) )
 Landing Page
 <img src ="https://res.cloudinary.com/deqbqghhq/image/upload/v1664317151/298995-alexfas01_cr6lle.jpg"/>
 
