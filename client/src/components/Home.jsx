@@ -23,7 +23,7 @@ const Home = () =>
   const index = page * characterPerPage;
   const endIndex = index - characterPerPage;
   const actualPage = allDogs?.slice(endIndex, index);
-console.log(actualPage)
+
   const paginado = (numPage) =>
   {
     setPage(numPage)
