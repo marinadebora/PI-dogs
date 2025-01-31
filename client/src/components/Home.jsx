@@ -160,7 +160,8 @@ const Home = () =>
       />
       {/* ------------------------------------ */}
       {
-        actualPage ?
+        !actualPage ?<div className={style.containGif}><img src={Image.gif} className={style.gif} alt='gif' /></div>
+        :
         <div className={style.containTotalDog}>
           <div key='divContain' className={style.containDog}>
             {
@@ -186,8 +187,7 @@ const Home = () =>
             }
           </div>
         </div>
-        :
-        <div className={style.containGif}><img src={Image.gif} className={style.gif} alt='gif' /></div>
+        
       }
     </div>
   )
