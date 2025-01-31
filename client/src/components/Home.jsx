@@ -23,7 +23,7 @@ const Home = () =>
   const index = page * characterPerPage;
   const endIndex = index - characterPerPage;
   const actualPage = allDogs?.slice(endIndex, index);
-
+console.log(actualPage)
   const paginado = (numPage) =>
   {
     setPage(numPage)
@@ -160,8 +160,7 @@ const Home = () =>
       />
       {/* ------------------------------------ */}
       {
-        !actualPage ?<div className={style.containGif}><img src={Image.gif} className={style.gif} alt='gif' /></div>
-        :
+        actualPage.length ?
         <div className={style.containTotalDog}>
           <div key='divContain' className={style.containDog}>
             {
@@ -187,7 +186,8 @@ const Home = () =>
             }
           </div>
         </div>
-        
+        :
+        <div className={style.containGif}><img src={Image.gif} className={style.gif} alt='gif' /></div>
       }
     </div>
   )
