@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import { createDogs, getAllTemperament } from '../action/action';
+import { postDog } from '../redux/thunks/dog.js';
+import { getAllTemperaments } from '../redux/thunks/temperament.js';
 import style from '../styles/DogCreate.module.css'
-import image from '../image/Nuevo.png'
+import image from '../image'
 import validate from '../funciones/funValidate.js'
 
 
 
 
-export default function DogCreate()
+const DogCreate = () =>
 {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
@@ -20,17 +21,17 @@ export default function DogCreate()
     weightMax: '',
     life_span_Since: '',
     life_span_Until: '',
-    temperaments: []
+    temperament: []
   });
 
-  const allTemperament = useSelector(state => state.temperament)
+  const { allTemperaments } = useSelector(state => state.temperament)
   const navigate = useNavigate()
   const [errors, setErrors] = useState({})
 
   useEffect(() =>
   {
-    dispatch(getAllTemperament())
-  })
+    dispatch(getAllTemperaments())
+  }, [dispatch])
 
   const handleChange = (event) =>
   {
@@ -41,16 +42,16 @@ export default function DogCreate()
     setErrors(validate({
       ...form,
       [event.target.name]: event.target.value
-    }))  //valida cada una de las variables del formulario
+    }))
   }
 
   const handleSubmit = (event) =>
   {
     event.preventDefault();
-    if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax || !form.temperaments) {
+    if (!form.name || !form.heightMin || !form.heightMax || !form.weightMin || !form.weightMax || !form.temperament) {
       alert('Complete all fields')
     } else {
-      dispatch(createDogs(form))
+      dispatch(postDog(form))
       alert('Dog breed successfully created!!')
       setForm({
         name: '',
@@ -60,7 +61,7 @@ export default function DogCreate()
         weightMax: '',
         life_span_Since: '',
         life_span_Until: '',
-        temperaments: []
+        temperament: []
       })
       navigate('/home')
     }
@@ -71,7 +72,7 @@ export default function DogCreate()
     event.preventDefault();
     setForm({
       ...form,
-      temperaments: [...form.temperaments, event.target.value]
+      temperament: [...form.temperament, event.target.value]
     })
     setErrors(validate({
       ...form,
@@ -83,17 +84,19 @@ export default function DogCreate()
   {
     setForm({
       ...form,
-      temperaments: form.temperaments.filter(e => e !== event)
+      temperament: form.temperament.filter(e => e !== event)
     })
   }
 
   return (
-    <div>
-      <div className={style.btnCreated}>
-        <h1 className={style.title}>Create your dog breed</h1>
-        <Link to='/home'> <img src={image} alt='hueso' /></Link>
+    <div className={style.containerTotal}>
+
+      <div className={style.title}>
+        <div className={style.containLink}><Link to='/home'> <img className={style.img} src={image.return} alt='hueso' /></Link></div>
+        <div className={style.containH1} ><h1>Create your dog breed</h1></div>
       </div>
-      <div>
+
+      <div className={style.containerForm}>
         <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.container}>
             <div className={style.group}>
@@ -107,6 +110,7 @@ export default function DogCreate()
               />
               {errors.name && (<p className={style.p}>{errors.name}</p>)}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Minimum height</label>
               <input
@@ -118,6 +122,7 @@ export default function DogCreate()
               />
               {errors.heightMin && <p className={style.p}>{errors.heightMin}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Max height</label>
               <input
@@ -129,6 +134,7 @@ export default function DogCreate()
               />
               {errors.heightMax && <p className={style.p}>{errors.heightMax}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Min weight</label>
               <input
@@ -140,6 +146,7 @@ export default function DogCreate()
               />
               {errors.weightMin && <p className={style.p}>{errors.weightMin}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Max weight</label>
               <input
@@ -151,9 +158,9 @@ export default function DogCreate()
               />
               {errors.weightMax && <p className={style.p}>{errors.weightMax}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Years of life</label>
-              <label className={style.label}>Since</label>
               <input
                 type='text'
                 onChange={(e) => handleChange(e)}
@@ -163,6 +170,7 @@ export default function DogCreate()
               />
               {errors.life_span_Since && <p className={style.p}>{errors.life_span_Since}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Until</label>
               <input
@@ -174,33 +182,41 @@ export default function DogCreate()
               />
               {errors.life_span_Until && <p className={style.p}>{errors.life_span_Until}</p>}
             </div>
+
             <div className={style.group}>
               <label className={style.label}>Temperament  </label>
-              <select
-                onChange={(e) => handleTemperament(e)}
-              >
+              <select className={style.select}
+                onChange={(e) => handleTemperament(e)}>
                 <option>Select Temperament</option>
-                {allTemperament?.map((e) => (
+                {allTemperaments?.map((e) => (
 
                   <option value={e.name} name={e.name} key={e.name}>{e.name}</option>
                 ))
                 }
               </select>
-
             </div>
-            {form.temperaments.map(e =>
+
+            <div className={style.group}>
               <div className={style.temp}>
-                <h5>{e}
-                  <button className={style.btn} onClick={() => handleDelete(e)} >X</button>
-                </h5>
+                {form.temperament.map((e, i) =>
+                  <h5 key={i}>{e}
+                    <button className={style.btn} onClick={() => handleDelete(e)} >X</button>
+                  </h5>
+
+                )}
+                {errors.temperament && <p className={style.p}>{errors.temperament}</p>}
               </div>
+            </div>
 
-            )} {errors.temperaments && <p className={style.p}>{errors.temperament}</p>}
+          </div>
 
+          <div className={style.group}>
             <button type="submit" className={style.button}>Create</button>
           </div>
+          
         </form>
       </div>
     </div>
   )
 }
+export default DogCreate

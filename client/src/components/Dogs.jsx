@@ -1,45 +1,51 @@
-import React from "react";
 import style from '../styles/Dogs.module.css';
-import img from '../image/defaultDB.jpg'
-import getTemperaments from "../funciones/funTemp";
 import { useDispatch } from "react-redux";
-import { deleteDogs, getAllDogs } from "../action/action";
+import { deleteDog, getAllDogs } from "../redux/thunks/dog";
+import PropTypes from 'prop-types';
 
-
-export default function Dogs({ image, name, temperaments, weightMin, weightMax, id, origin }){
+const Dogs = ({ image, name, temperament, weightMin, weightMax, id, createDB }) =>
+{
   const dispatch = useDispatch()
-
-  const handleDelete = (event) =>{
+  const handleDelete = (event) =>
+  {
     event.preventDefault();
-    dispatch(deleteDogs(id))
+    dispatch(deleteDog(id))
     alert('Successfully erased')
     dispatch(getAllDogs())
   }
 
   return (
-    <div className={style.maxContainer}>
-      <div className={style.container}>
+    <div className={style.containerCard}>
+      <div className={style.name}>
+        <h3>{name && name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</h3>
         {
-          id.length > 5 ? <button onClick={(e) => handleDelete(e)}>X</button> : ''
+          createDB ? <button className={style.btn} onClick={(e) => handleDelete(e)}>X</button> : <p></p>
         }
-
-        {
-          image ? <img src={image} alt={name} /> : <img src={img} alt={name} />
-        }
-       {/*  {
-          origin ? <h2>origin: {origin}</h2>: <h2>empty data</h2>
-        }
-         */}
-        <h3>Breed: {name}</h3>
-
-        {
-          temperaments ? <h4 >Temperament: {getTemperaments(temperaments)} </h4> : <h4>Temperament: Empty data</h4>
-        }
-
-        <h5>Min weight: {weightMin} max weight: {weightMax}</h5>
-
-
+      </div>
+      <div className={style.imageContain}>
+        <img className={style.image} src={image} alt={name} />
+      </div>
+      <div className={style.footer}>
+        <div className={style.footerCard}>
+          {
+            temperament ? temperament.map(e => (<p className={style.temperament} key={e.name}>{e.name}</p>)) : <h4>Temperament: Empty data</h4>
+          }
+        </div>
+        <div className={style.weightMin}>
+          <p>Min weight: {weightMin} max weight: {weightMax}</p>
+        </div>
       </div>
     </div>
   );
 };
+
+Dogs.propTypes = {
+  image: PropTypes.string,
+  name: PropTypes.string,
+  temperament: PropTypes.array,
+  weightMin: PropTypes.string,
+  weightMax: PropTypes.string,
+  id: PropTypes.string,
+  createDB: PropTypes.bool
+}
+export default Dogs

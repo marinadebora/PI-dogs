@@ -1,15 +1,16 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import style from '../styles/LandingPage.module.css'
-import img from '../image/hueso.png'
+import Image from '../image'
 
-export default function LandingPage(){
-    return (
-        <div className={style.contain}>
-            <Link to='/home' >
-                <img src={img} className={style.btn} alt='hueso' />
-            </Link>
+const LandingPage = () =>
+{
+	return (
+		<div className={style.contain}>
+			<Link to='/home' >
+				<img src={Image.hueso} className={style.btn} alt='hueso' />
+			</Link>
 
-        </div>
-    )
+		</div>
+	)
 }
+export default LandingPage

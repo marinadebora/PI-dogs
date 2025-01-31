@@ -1,12 +1,8 @@
-.maxContainer {
-    width: 100%;
-
-    margin-left: 30px;
-}
-
-.container {
-    width: 410px;
-    height: 400px;
+.containerCard {
+    width: 25rem;
+    height: 20rem;
+    display: flex;
+    flex-wrap: wrap;
     overflow: hidden;
     position: relative;
     box-shadow: 5px 8px 12px rgba(148, 148, 148, 0.483);
@@ -17,83 +13,74 @@
 
 }
 
-.container:hover {
+.containerCard:hover {
     transform: scale(1.1);
     box-shadow: 13px 15px 37px black;
 }
 
-.container img {
+.name {
     width: 100%;
-    height: 100%;
-    padding: 0;
+    height: 1.5rem;
+    color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 8rem;
+}
+
+.imageContain {
+    width: 100%;
+    display: flex;
+
+}
+
+.image {
+    width: 100%;
+    height: 15rem;
+    padding: 0.2rem;
     display: inline-block;
-    border-radius: 30px;
+    border-radius: 1.8rem;
     background-image: url('../image/defaultDB.jpg');
     border-radius: 8px;
-    box-shadow: 0 2px 2px #e6fb033c;
-    overflow: hidden;
-    margin: 20px;
-    text-align: center;
     transition: all 0.25s;
-    display: inline-block;
+
 }
 
-.container h3 {
-
-    font-size: 1.5rem;
-    color: #fbf9f9;
-    position: absolute;
-    top: 5%;
-    left: 10%;
-    transform: translateX(-50%, -50%);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 0 0 8px black;
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.container h5 {
-
-
-    color: #d0d704;
-    position: absolute;
-    top: 90%;
-    left: 10%;
-    margin: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 1px 1px 2px black;
-}
-
-.container h4 {
-    color: #fbf9f9;
-    position: absolute;
-    top: 80%;
-    left: 10%;
-    margin: auto;
+.footerCard {
+    width: 90%;
+    height: 1.5rem;
+    display: flex;
+    align-items: start;
+    justify-content: start;
     flex-wrap: wrap;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 0 0 5px black;
+    gap: 0.5rem;
+    overflow: hidden;
+
 }
 
-.container h2 {
-    color: #fbf9f9;
-    position: absolute;
-    top: 60%;
-    left: 10%;
-    margin: auto;
-    flex-wrap: wrap;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 0 0 5px black;
+.temperament {
+    color: antiquewhite;
 }
-.container button {
-    position: absolute;
+
+.weightMin {
+    width: 90%;
+    color: rgb(250, 215, 215);
+}
+
+.btn {
+    width: 1.5rem;
+    border-radius: 0.3rem;
+    background-color: #f9dc02;
+    font-size: medium;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(239, 229, 245);
-    margin: 5px;
-    width: 30px;
-    height: 20px;
-    top: 10%;
-    left: 80%;
-    color: black;
-    box-shadow: 5px 8px 12px black;
+    font-weight: bold;
+
 }

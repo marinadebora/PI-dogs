@@ -21,8 +21,8 @@ export default function validate(form){
   if (!form.life_span_Until || parseFloat(form.life_span_Until) <= parseFloat(form.life_span_Since) || parseFloat(form.life_span_Until) < 5) {
     errors.life_span_Until = 'The years of life must be greater than the minimum value and less than 25 years'
   }
-  if (form.temperaments.legth< 1) {
-    errors.temperaments = 'Temperament is required'
+  if (form.temperament.legth< 1) {
+    errors.temperament = 'Temperament is required'
   }
   return errors
 }

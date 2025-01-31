@@ -1,69 +1,44 @@
-import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { dogName } from '../action/action';
+import { getDogName } from '../redux/thunks/dog';
 import style from '../styles/SearchBar.module.css'
 
-export default function SearchBar(){
+const SearchBar = () =>
+{
   const dispatch = useDispatch();
   const [name, setName] = useState('');
 
-  function handleChange(event){
+  function handleChange(event)
+  {
     event.preventDefault()
     setName(event.target.value)
-
   }
 
-  function handleSubmit(event){
+  function handleSubmit(event)
+  {
     event.preventDefault();
-    const dog = dogName(name);
+
     if (!name) {
       return alert('Enter name that does not contain numbers or symbols')
     } else {
 
-      dispatch(dog)
+      dispatch(getDogName(name))
       setName('')
     }
 
   }
-
-
   return (
 
-    <div className={style.searchbar}>
-      <label className={style.label}>Search by name</label>
-      <input value={name} key='buscar' type='text' placeholder='Search...' onChange={(e) => handleChange(e)} />
-      <button className={style.btn} type='submit' onClick={(e) => handleSubmit(e)}>SEARCH</button>
-      <Link key={'landing'} to='/' className={style.link}><h3 className={style.created}>Homepage</h3></Link>
-
-
-
+    <div className={style.containSerchBar}>
+      <Link key={'landing'} to='/' className={style.link}><h3 >Homepage</h3></Link>
+      <div className={style.searchbar}>
+        <label className={style.label}>Search by name</label>
+        <input className={style.input} value={name} key='buscar' type='text' placeholder='Search...' onChange={(e) => handleChange(e)} />
+        <button className={style.btn} type='submit' onClick={(e) => handleSubmit(e)}>SEARCH</button>
+      </div>
     </div>
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default SearchBar
